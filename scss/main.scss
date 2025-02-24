@@ -1,6 +1,7 @@
-@import 'config';
+@import "config";
+@import "menu";
 
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -10,12 +11,14 @@ body {
   color: white;
   height: 100%;
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5;
 }
 
 // Headings
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin: 0;
   font-weight: 400;
 
@@ -26,12 +29,12 @@ h1, h2, h3 {
   &.sm-heading {
     margin-bottom: 1rem;
     padding: 0.2rem 1rem;
-    background: rgba(lighten($primary-color, 4) , 0.5);
+    background: rgba(lighten($primary-color, 4), 0.5);
     border-radius: 0.3rem;
   }
 }
 
-a{
+a {
   color: white;
   text-decoration: none;
 }
@@ -53,7 +56,7 @@ main {
   .icons {
     margin-top: 1rem;
 
-    a{
+    a {
       padding: 0.4rem;
 
       &:hover {
