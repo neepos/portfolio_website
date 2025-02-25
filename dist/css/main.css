@@ -201,7 +201,30 @@ main {
       border-color: #bcc987;
       transition: all 0.5s ease-out; }
 
-.btn, .btn-dark, .btn-light {
+.boxes {
+  display: flex;
+  flex-direction: column;
+  /* Stack vertically */
+  align-items: center;
+  /* Center horizontally */
+  margin-top: 0.5rem; }
+  .boxes div {
+    font-size: 1.5rem;
+    border: 1px white solid;
+    /* Thinner border */
+    padding: 0.5rem 1.5rem;
+    margin-bottom: 1.5rem;
+    /* Closer spacing if you want */
+    border-radius: 5px;
+    text-align: center;
+    /* Center text in the box */
+    transition: all 0.5s ease-out; }
+    .boxes div:hover {
+      padding: 1rem 2rem;
+      background: #323819;
+      cursor: pointer; }
+
+.btn, .btn-dark {
   display: block;
   padding: 0.65rem 1.25rem;
   margin-bottom: 0.5rem;
@@ -212,7 +235,7 @@ main {
   background: #2b2b2b;
   cursor: pointer;
   transition: all 0.5s ease-out; }
-  .btn:hover, .btn-dark:hover, .btn-light:hover {
+  .btn:hover, .btn-dark:hover {
     transform: translate3d(0, -2px, 0);
     background: #bcc987;
     color: #fff; }
@@ -223,13 +246,6 @@ main {
   .btn-dark:hover {
     background: #bcc987;
     color: black; }
-
-.btn-light {
-  background: #777777;
-  border-color: #919191; }
-  .btn-light:hover {
-    background: #323819;
-    color: #fff; }
 
 #main-footer {
   text-align: center;

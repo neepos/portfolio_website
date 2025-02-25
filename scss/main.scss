@@ -138,23 +138,48 @@ main {
   }
 }
 
+// Contact
+.boxes {
+  display: flex;
+  flex-direction: column; /* Stack vertically */
+  align-items: center;    /* Center horizontally */
+  margin-top: 0.5rem;
+
+  div {
+    font-size: 1.5rem;
+    border: 1px white solid;          /* Thinner border */
+    padding: 0.5rem 1.5rem;
+    margin-bottom: 1.5rem;            /* Closer spacing if you want */
+    border-radius: 5px;
+    text-align: center;               /* Center text in the box */
+    @include easeOut;
+
+    &:hover {
+      padding: 1rem 2rem;
+      background: darken($secondary-color, 50);
+      cursor: pointer;
+    }
+  }
+}
+
+
 // Button Styles
 .btn {
-  display: block;             // inline-block so width is only as large as needed
-  padding: 0.65rem 1.25rem;         // slightly bigger padding
+  display: block;
+  padding: 0.65rem 1.25rem;
   margin-bottom: 0.5rem;
-  border-radius: 0.3rem;            // same rounding you used on .bio, .job
+  border-radius: 0.3rem;
   text-transform: uppercase;
   text-align: center;
   letter-spacing: 0.05rem;
   background: darken($primary-color, 10);
   cursor: pointer;
-  @include easeOut;                 // let’s use your smooth transition mixin
+  @include easeOut;
 
   &:hover {
     transform: translate3d(0, -2px, 0);
-    background: $secondary-color;   // accent color on hover
-    color: #fff;                    // keep text white
+    background: $secondary-color;
+    color: #fff; 
   }
 }
 
@@ -167,19 +192,6 @@ main {
   &:hover {
     background: $secondary-color;
     color: black;
-    // optionally change color to something else if you like
-  }
-}
-
-// Light Button
-.btn-light {
-  @extend .btn;
-  background: lighten($primary-color, 20);
-  border-color: lighten($primary-color, 30);
-
-  &:hover {
-    background: darken($secondary-color, 50);
-    color: #fff; 
   }
 }
 
