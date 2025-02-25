@@ -191,33 +191,48 @@ main {
 .projects {
   display: grid;
   grid-gap: 1.5rem;
-  grid-template-columns: repeat(3, 1fr); }
-  .projects img {
-    width: 100%;
-    border: 3px white solid;
-    border-radius: 5px; }
-    .projects img:hover {
-      opacity: 0.5;
-      border-color: #bcc987;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+  .projects .item {
+    position: relative;
+    overflow: hidden; }
+    .projects .item img {
+      width: 100%;
+      border: 3px white solid;
+      border-radius: 5px;
+      transition: transform 0.3s ease;
+      z-index: 2;
+      opacity: 0.3; }
+      .projects .item img:hover {
+        transition: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        opacity: 0.8;
+        transition: all 0.5s ease-out; }
+    .projects .item .project-name {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #bcc987;
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      z-index: 1;
+      cursor: pointer;
       transition: all 0.5s ease-out; }
 
 .boxes {
   display: flex;
   flex-direction: column;
-  /* Stack vertically */
   align-items: center;
-  /* Center horizontally */
   margin-top: 0.5rem; }
   .boxes div {
     font-size: 1.5rem;
     border: 1px white solid;
-    /* Thinner border */
     padding: 0.5rem 1.5rem;
     margin-bottom: 1.5rem;
-    /* Closer spacing if you want */
     border-radius: 5px;
     text-align: center;
-    /* Center text in the box */
     transition: all 0.5s ease-out; }
     .boxes div:hover {
       padding: 1rem 2rem;
@@ -246,6 +261,80 @@ main {
   .btn-dark:hover {
     background: #bcc987;
     color: black; }
+
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  /* Ensure it's above other content */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Use primary color with opacity */ }
+  .modal .modal-content {
+    position: relative;
+    margin: 10% auto;
+    /* Center vertically */
+    padding: 20px;
+    width: 80%;
+    max-width: 1100px;
+    background-color: #444;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Add shadow for depth */ }
+    .modal .modal-content .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: #aaa;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer; }
+      .modal .modal-content .close-btn:hover, .modal .modal-content .close-btn:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer; }
+    .modal .modal-content .modal-title {
+      margin-bottom: 10px;
+      color: #bcc987;
+      font-size: 2rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
+    .modal .modal-content .modal-image {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+      border: 2px #bcc987 solid;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
+    .modal .modal-content .modal-description {
+      font-size: 1rem;
+      color: white; }
+    .modal .modal-content .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255, 255, 255, 0.5);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 24px;
+      color: #444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s; }
+      .modal .modal-content .carousel-btn:hover {
+        background-color: rgba(113, 126, 57, 0.5); }
+    .modal .modal-content .next-btn {
+      right: 25px;
+      background-color: rgba(188, 201, 135, 0.5); }
 
 #main-footer {
   text-align: center;
