@@ -120,59 +120,62 @@ main {
 
 // Projects
 // Projects
+
 .projects {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 
   .item {
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease; // Add smooth scaling
+    padding: 1rem;
+    background: rgba(lighten($primary-color, 4), 0.5);
+    border-radius: 0.3rem;
+    border-bottom: $secondary-color solid 0.2rem;
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
 
-    &:hover {
-      transform: scale(1.05); // Slightly enlarge the entire container
-    }
+    .project-image {
+      position: relative;
+      flex: 1;
 
-    .project-link {
-      display: block;
+      .project-link {
+        display: block;
 
-      &:hover ~ .project-name {
-        opacity: 0;
-        @include easeOut;
+        &:hover img {
+          transform: scale(1.05);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+          opacity: 0.8;
+          @include easeOut;
+        }
       }
 
-      &:hover img {
-        transform: scale(1.1); // Keep image slightly larger for a layered effect
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        opacity: 0.8;
-        @include easeOut;
+      img {
+        width: 100%;
+        border: 3px white solid;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        z-index: 2;
+        opacity: 0.9;
+      }
+
+      .project-name {
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        padding: 0.25rem 0.75rem;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 0.3rem;
+        color: white;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+        pointer-events: none;
       }
     }
 
-    img {
-      width: 100%;
-      border: 3px white solid;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-      z-index: 2;
-      opacity: 0.3;
-    }
-
-    .project-name {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: $secondary-color;
-      font-size: 2rem;
-      font-weight: bold;
-      text-align: center;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-      z-index: 1;
-      cursor: pointer;
-      transition: opacity 0.3s ease;
-      pointer-events: none; // Keeps hover effect smooth
+    .project-description {
+      flex: 1;
     }
   }
 }
