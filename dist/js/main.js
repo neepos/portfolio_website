@@ -43,24 +43,49 @@ let currentImageIndex = 0;
 let images = [];
 
 document.querySelectorAll(".projects .item").forEach(item => {
-  item.addEventListener("click", function() {
+  item.addEventListener("click", function () {
     const img = this.querySelector("img");
     const title = img.alt;
-    let description = "Description for " + title; // Default description
+    let description = "Description for " + title;
 
-    // Specific description for Ellicottville Ski Club
     if (title === "evSkiClub") {
-      description = "The Ellicottville Ski Club website was designed using the MERN stack and React Redux. It features a dynamic and responsive interface that allows users to explore ski club activities, membership details, and event schedules.";
+      description = `evSkiClub is a React-based web application for a private ski club in Ellicottville, NY. Members can log in to manage their accounts, view club events, and stay up to date on announcements. The site features a clean, responsive UI and includes admin tools for handling invitations, payments, and permissions. I built this from scratch using the MERN stack to give the club an easy-to-maintain platform that feels fast and modern.
 
-      // Set images array for the Ellicottville Ski Club project
+Tech Stack:
+- Frontend: React, Redux, Bootstrap 5
+- Backend: Node.js, Express, MongoDB
+- Auth: JWT-based login and user role handling
+- Hosting: Deployed on Vercel with serverless functions for contact and notification logic`;
+
       images = [
-        img.src, // First image
-        "img/projects/evskiclub_project2.png", // Second image
-        "img/projects/evskiclub_project3.png"  // Third image
-        // Add more image URLs as needed
+        img.src,
+        "img/projects/evskiclub_project.png",
+        "img/projects/evskiclub_login.png",
+        "img/projects/evskiclub_gallery.png",
+        "img/projects/evskiclub_events.png",
+        "img/projects/evskiclub_calendar.png",
+        "img/projects/evskiclub_editmember.png"
+      ];
+    } else if (title === "webCharms") {
+      description = `webCHARMS is a browser-based application I built for law enforcement and municipal users to search, review, and report on booking and incident records. It’s designed to be fast, clean, and easy to use—something that works just as well in the field as it does behind a desk.
+
+Users log in with agency credentials and can run detailed searches using a flexible form with filters for names, dates, physical descriptions, charges, and more. The results are fast and readable, with options to view full booking records, mugshots, arrest information, and related incident details. They can also generate reports—Booking Summaries, RAP Sheets, Arrest Logs—as PDFs right from the app.
+
+Behind the interface, the app uses a modular form-loading system and a secure API to keep everything responsive and maintainable. The goal was to build a system that didn’t get in its own way—a focused, reliable tool that helps people do their jobs without making it harder.
+
+Tech Stack:
+- Frontend: TMS WEB Core (compiled Pascal), Bootstrap 5
+- Backend: Delphi with TMS XData, PostgreSQL via UniDAC
+- Authentication: JWT-based login and session handling
+- Reporting: FastReports for on-demand PDF generation
+- Deployment: Self-hosted app served with the XData server`;
+
+      images = [
+        img.src,
+        "img/projects/evskiclub_project2.png",
+        "img/projects/evskiclub_project3.png"
       ];
     } else {
-      // Default to a single image if no specific images are set
       images = [img.src];
     }
 
@@ -69,7 +94,7 @@ document.querySelectorAll(".projects .item").forEach(item => {
 
     modalTitle.textContent = title;
     modalImage.src = images[currentImageIndex];
-    modalDescription.textContent = description;
+    modalDescription.innerHTML = description.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
 
     modal.style.display = "block";
   });
@@ -83,16 +108,16 @@ function updateCarouselButtons() {
   }
 }
 
-nextBtn.addEventListener("click", function() {
+nextBtn.addEventListener("click", function () {
   currentImageIndex = (currentImageIndex + 1) % images.length;
   modalImage.src = images[currentImageIndex];
 });
 
-closeBtn.addEventListener("click", function() {
+closeBtn.addEventListener("click", function () {
   modal.style.display = "none";
 });
 
-window.addEventListener("click", function(event) {
+window.addEventListener("click", function (event) {
   if (event.target === modal) {
     modal.style.display = "none";
   }
