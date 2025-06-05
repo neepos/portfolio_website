@@ -236,40 +236,37 @@ main#home h1 {
 }
 
 .projects {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 .projects .item {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+.projects .item .project-image {
   position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease;
+  flex: 1;
 }
-.projects .item:hover {
-  transform: scale(1.05);
-}
-.projects .item .project-link {
+.projects .item .project-image .project-link {
   display: block;
 }
-.projects .item .project-link:hover ~ .project-name {
-  opacity: 0;
-  transition: all 0.5s ease-out;
-}
-.projects .item .project-link:hover img {
-  transform: scale(1.1);
+.projects .item .project-image .project-link:hover img {
+  transform: scale(1.05);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   opacity: 0.8;
   transition: all 0.5s ease-out;
 }
-.projects .item img {
+.projects .item .project-image img {
   width: 100%;
   border: 3px white solid;
   border-radius: 5px;
   transition: all 0.3s ease;
   z-index: 2;
-  opacity: 0.3;
+  opacity: 0.9;
 }
-.projects .item .project-name {
+.projects .item .project-image .project-name {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -279,10 +276,10 @@ main#home h1 {
   font-weight: bold;
   text-align: center;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  z-index: 1;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
   pointer-events: none;
+}
+.projects .item .project-description {
+  flex: 1;
 }
 
 .boxes {
@@ -435,14 +432,8 @@ main#home h1 {
 }
 
 @media screen and (min-width: 1171px) {
-  .projects {
-    grid-template-columns: repeat(4, 1fr);
-  }
 }
 @media screen and (min-width: 769px) and (max-width: 1170px) {
-  .projects {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 @media screen and (max-width: 768px) {
   main {
@@ -476,15 +467,17 @@ main#home h1 {
     grid-template-areas: "bioimage" "bio" "job1" "job2" "job3";
     grid-template-columns: 1fr;
   }
-  .projects {
-    grid-template-columns: repeat(2, 1fr);
+  .projects .item {
+    flex-direction: column;
+    text-align: center;
   }
 }
 @media screen and (max-width: 500px) {
   main#home h1 {
     margin-top: 10vh;
   }
-  .projects {
-    grid-template-columns: 1fr;
+  .projects .item {
+    flex-direction: column;
+    text-align: center;
   }
 }/*# sourceMappingURL=main.css.map */
