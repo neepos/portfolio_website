@@ -12,7 +12,7 @@ menuBtn.addEventListener("click", toggleMenu);
 
 function toggleMenu() {
   if (!showMenu) {
-    menuBtn.classList.add("close");
+    menuBtn.classList.toggle("close");
     menu.classList.add("show");
     menuNav.classList.add("show");
     menuBranding.classList.add("show");
@@ -20,7 +20,7 @@ function toggleMenu() {
 
     showMenu = true;
   } else {
-    menuBtn.classList.remove("close");
+    menuBtn.classList.toggle("close");
     menu.classList.remove("show");
     menuNav.classList.remove("show");
     menuBranding.classList.remove("show");
